@@ -32,8 +32,8 @@
         "program": "${workspaceFolder}/node_modules/jest/bin/jest",
       },
       "env": {
-        "TEST_TODO_ID": 1,
-        "TEST_COMMENT_ID": 1,
+        "TEST_TODO_ID": "1",
+        "TEST_COMMENT_ID": "1"
       }
     }
   ]
