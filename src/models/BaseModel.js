@@ -14,14 +14,14 @@ class BaseModel {
   }
 
   get savable() {
-    return Object.keys(this.attributes).reduce((acc, key) => ({
+    return Object.keys(this.attributes || {}).reduce((acc, key) => ({
       ...acc,
       [snakeCase(key)]: this.attributes[key]
     }), {})
   }
 
   get responsable() {
-    return Object.keys(this.attributes).reduce((acc, key) => ({
+    return Object.keys(this.attributes || {}).reduce((acc, key) => ({
       ...acc,
       [camelCase(key)]: this.attributes[key]
     }), {})
@@ -42,7 +42,7 @@ class BaseModel {
 
   getLastId() {
     const items = this.findAll();
-    return items ? items.slice(-1)[0].get(BaseModel.ID) : 1;
+    return items.length ? items.slice(-1)[0].get(BaseModel.ID) : 0;
   }
 
   save() {
