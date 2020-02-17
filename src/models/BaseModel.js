@@ -57,6 +57,7 @@ class BaseModel {
       this.attributes[BaseModel.UPDATED_AT] = new Date();
       this.model.set(`${this.modelName}[${index}]`, this.savable).write();
     }
+    this.attributes = this.model.find({ id: this.attributes.id }).value();
   }
 
   remove() {

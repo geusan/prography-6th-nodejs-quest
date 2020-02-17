@@ -16,33 +16,43 @@
 - Node 10 이상
 - ES6 이상 문법 사용(babel-node)
 - nodemon(코드 수정시 자동 재시작)
+- dotenv(환경변수 모듈)
 
 ## 과제
 
 할일을 만들고 관리를 할 수 있는 Restful API 서버를 구현해주시기 바랍니다.
-이 프로그램은 다음과 같은 기능이 있습니다.
+이 프로그램은 다음과 같은 기능이 있습니다. (옵션)으로 표시된 내용은 가산점 항목입니다.
 
 - 할일이 있다.
 - 할일은 다음의 필드를 가지고 있다.
-  - 식별아이디(id) - 자동생성
-  - 제목(title)
-  - 설명(description)
-  - 태그목록(tags)
-  - 완료 여부(isCompleted) - 초깃값: false
-  - 생성일(createdAt) - 자동생성
-  - 수정일(updatedAt) - 자동생성
+  ```Typescript
+  Todo {
+    id: number, // 식별 아이디, auto increment
+    title: string, // 제목
+    description: string, // 할일 내용
+    tags: string[], // 할일 분류 태그, ex: ["prography", "nodejs"]
+    isCompleted: boolean, // 완료여부, default: false
+    createdAt: Date, // 생성일, auto create
+    updatedAt: Date, // 수정일, auto update
+  }
+  ```
 - 할일을 등록/수정/삭제 할 수 있다.
 - 할일을 완료 표시를 할 수 있다.
-- 할일에 태그를 삽입할 수 있다.
-- 할일을 태그로 모아서 볼 수 있다.
-- 할일을 생성된 순서로 정렬할 수 있다.
-- 할일을 제목 또는 설명의 내용의 일부분으로 검색할 수 있다.
+- (옵션)할일에 태그를 삽입할 수 있다.
+- (옵션)할일을 태그로 모아서 볼 수 있다.
+- (옵션)할일을 생성된 순서로 정렬할 수 있다.
+- (옵션)할일을 제목 또는 설명의 내용의 일부분으로 검색할 수 있다.
 - 할일에 코멘트(댓글)을 등록/수정/삭제 할 수 있다.
 - 코멘트는 다음의 필드를 가지고 있다.
-  - 식별아이디(id) - 자동생성
-  - 내용(contents)
-  - 생성일(createdAt) - 자동생성
-  - 수정일(updatedAt) - 자동생성
+  ```Typescript
+  Comment {
+    id: number, // 식별 아이디, auto increment
+    todoId: number, // 할일 아이디 외래키, reference by Todo
+    contents: string, // 댓글 내용
+    createdAt: Date, // 생성일, auto create
+    updatedAt: Date, // 수정일, auto update
+  }
+  ```
 
 이 서버에서 요구하는 API는 총 11개입니다.
 
@@ -69,7 +79,7 @@
 ### 가산점 항목
 
 - 브랜치전략을 나누어서 개발
-- validation 처리, 빈값의 경우 클라이언트 측 에러임을 알려주기
+- validation 처리, 빈값 또는 잘못된 값의 경우 클라이언트 측 에러임을 알려주기
 - 아래의 기능을 추가로 개발합니다.
   1. 할일 정렬: `GET /todos?order[createdAt]=desc`
   2. 할일 검색1: `GET /todos?title=%과제%`
@@ -80,7 +90,7 @@
 
 ### 제출방법
 
-이 레포를 지원자의 Github으로 fork 한뒤에 개발을 진행하시면 됩니다. 마감일 기준 하루 전까지의 커밋까지 인정이됩니다.
+이 레포를 지원자의 Github으로 fork 한뒤에 개발을 진행하시면 됩니다. 마감일 기준 23:59:59 까지의 커밋까지 인정됩니다.
 
 ***
 
@@ -90,4 +100,4 @@
 
 test 폴더에 정의되어있습니다.
 
-`npm test` 를 통해 실시할 수 있습니다.
+`npm test` 명령어로 실시할 수 있습니다.
