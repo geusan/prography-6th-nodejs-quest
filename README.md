@@ -16,6 +16,7 @@
 - Node 10 이상
 - ES6 이상 문법 사용(babel-node)
 - nodemon(코드 수정시 자동 재시작)
+- dotenv(환경변수 모듈)
 
 ## 과제
 
