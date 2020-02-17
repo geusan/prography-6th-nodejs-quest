@@ -25,13 +25,17 @@
 
 - 할일이 있다.
 - 할일은 다음의 필드를 가지고 있다.
-  - 식별아이디(id) - 자동생성
-  - 제목(title)
-  - 설명(description)
-  - 태그목록(tags)
-  - 완료 여부(isCompleted) - 초깃값: false
-  - 생성일(createdAt) - 자동생성
-  - 수정일(updatedAt) - 자동생성
+  ```Typescript
+  Todo {
+    id: number, // 식별 아이디, auto increment
+    title: string, // 제목
+    description: string, // 할일 내용
+    tags: string[], // 할일 분류 태그, ex: ["prography", "nodejs"]
+    isCompleted: boolean, // 완료여부, default: false
+    createdAt: Date, // 생성일, auto create
+    updatedAt: Date, // 수정일, auto update
+  }
+  ```
 - 할일을 등록/수정/삭제 할 수 있다.
 - 할일을 완료 표시를 할 수 있다.
 - (옵션)할일에 태그를 삽입할 수 있다.
@@ -40,10 +44,15 @@
 - (옵션)할일을 제목 또는 설명의 내용의 일부분으로 검색할 수 있다.
 - 할일에 코멘트(댓글)을 등록/수정/삭제 할 수 있다.
 - 코멘트는 다음의 필드를 가지고 있다.
-  - 식별아이디(id) - 자동생성
-  - 내용(contents)
-  - 생성일(createdAt) - 자동생성
-  - 수정일(updatedAt) - 자동생성
+  ```Typescript
+  Comment {
+    id: number, // 식별 아이디, auto increment
+    todoId: number, // 할일 아이디 외래키, reference by Todo
+    contents: string, // 댓글 내용
+    createdAt: Date, // 생성일, auto create
+    updatedAt: Date, // 수정일, auto update
+  }
+  ```
 
 이 서버에서 요구하는 API는 총 11개입니다.
 
